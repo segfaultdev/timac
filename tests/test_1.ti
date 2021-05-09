@@ -1,0 +1,33 @@
+func print_char, chr:
+  gbl cursor, 0;
+
+  set vid_buff, cursor;
+  add vid_buff, 0xB8000;
+
+  poke vid_buff, chr;
+
+  add cursor, 1;
+end
+
+func print_number, x:
+  lbl loop;
+
+  set chr, x;
+
+  mod x, 10;
+  add x, 48;
+
+  call print_char, chr;
+
+  div x, 10;
+  if x neq 0, goto loop;
+end
+
+func start:
+  set x, 3;
+  set y, 2;
+
+  add x, y;
+
+  call print_number, x;
+end
