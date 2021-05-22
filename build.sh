@@ -2,7 +2,7 @@
 
 # Build compiler
 echo "[Building TIMAC]"
-gcc -g -Iinclude timac.c -o timac
+gcc -g -Iinclude $(find . -name "*.c") -o timac
 
 # Build tests:
 echo "[Building tests/test_1.ti]"

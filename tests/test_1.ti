@@ -2,9 +2,13 @@ func print_char, chr:
   gbl cursor, 0;
 
   set vid_buff, cursor;
+  mul vid_buff, 2;
+
   add vid_buff, 0xB8000;
 
-  poke vid_buff, chr;
+  pokebyte vid_buff, chr;
+  add vid_buff, 1;
+  pokebyte vid_buff, 0x0F;
 
   add cursor, 1;
 end
@@ -14,8 +18,8 @@ func print_number, x:
 
   set chr, x;
 
-  mod x, 10;
-  add x, 48;
+  mod chr, 10;
+  add chr, 48;
 
   call print_char, chr;
 
